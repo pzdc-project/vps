@@ -129,7 +129,7 @@ Masternode Status: /usr/local/bin/pzdc-cli -conf=/etc/masternodes/pzdc_n1.conf m
 
 stop daemon: /usr/local/bin/pzdc-cli -conf=/etc/masternodes/pzdc_n1.conf stop
 
-start daemon: /usr/local/bin/activate_masternodes_pzdc
+start daemon: /usr/local/bin/pzdcd -conf=/etc/masternodes/pzdc_n1.conf --daemon
 
 
 ```
