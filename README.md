@@ -62,41 +62,41 @@ git clone https://github.com/pzdc-project/vps.git && cd vps
 Install & configure your desired master node with options:
 
 ```bash
-./install.sh -p pivx
+./install.sh -p pzdc
 ```
 
 ## Examples for typical script invocation
 
 These are only a couple of examples for typical setups. Check my [easy step-by-step guide for [vultr](/docs/masternode_vps.md) that will guide you through the hardest parts.
 
-**Install & configure 4 PIVX masternodes:**
+**Install & configure 4 PZDC masternodes:**
 
 ```bash
-./install.sh -p pivx -c 4
+./install.sh -p pzdc -c 4
 ```
 
-**Update daemon of previously installed PIVX masternodes:**
+**Update daemon of previously installed PZDC masternodes:**
 
 ```bash
-./install.sh -p pivx -u
+./install.sh -p pzdc -u
 ```
 
-**Install 6 PIVX masternodes with the git release tag "tags/v3.0.5.1"**
+**Install 6 PZDC masternodes with the git release tag "tags/v2.0.0.4"**
 
 ```bash
-./install.sh -p pivx -c 6 -r "tags/v3.0.5.1"
+./install.sh -p pzdc -c 6 -r "tags/v2.0.0.4"
 ```
 
-**Wipe all PIVX masternode data:**
+**Wipe all PZDC masternode data:**
 
 ```bash
-./install.sh -p pivx -w
+./install.sh -p pzdc -w
 ```
 
-**Install 2 PIVX masternodes and configure sentinel monitoring:**
+**Install 2 PZDC masternodes and configure sentinel monitoring:**
 
 ```bash
-./install.sh -p pivx -c 2 -s
+./install.sh -p pzdc -c 2 -s
 ```
 
 ## Options
@@ -117,29 +117,21 @@ The _install.sh_ script support the following parameters:
 
 ## Troubleshooting the masternode on the VPS
 
-If you want to check the status of your masternode, the best way is currently running the cli e.g. for $MUE via
+If you want to check the status of your masternode, here are some useful commands
 
 ```
-/usr/local/bin/mue-cli -conf=/etc/masternodes/mue_n1.conf getinfo
 
-{
-  "version": 1000302,
-  "protocolversion": 70701,
-  "walletversion": 61000,
-  "balance": 0.00000000,
-  "privatesend_balance": 0.00000000,
-  "blocks": 209481,
-  "timeoffset": 0,
-  "connections": 5,
-  "proxy": "",
-  "difficulty": 42882.54964804553,
-  "testnet": false,
-  "keypoololdest": 1511380627,
-  "keypoolsize": 1001,
-  "paytxfee": 0.00000000,
-  "relayfee": 0.00010000,
-  "errors": ""
-}
+edit config: nano /etc/masternodes/pzdc_n1.conf
+ 
+getinfo: /usr/local/bin/pzdc-cli -conf=/etc/masternodes/pzdc_n1.conf getinfo
+
+Masternode Status: /usr/local/bin/pzdc-cli -conf=/etc/masternodes/pzdc_n1.conf masternode status
+
+stop daemon: /usr/local/bin/pzdc-cli -conf=/etc/masternodes/pzdc_n1.conf stop
+
+start daemon: /usr/local/bin/pzdcd -conf=/etc/masternodes/pzdc_n1.conf --daemon
+
+
 ```
 
 # Help, Issues and Questions
@@ -162,12 +154,12 @@ The management script release will follow within the next couple of days.
 
 | command                               | description                                  |
 | :------------------------------------ | -------------------------------------------- |
-| nodemaster start pivx (all\|number)   | start all or a specific pivx masternode(s)   |
-| nodemaster restart pivx (all\|number) | stop all or a specific pivx masternode(s)    |
-| nodemaster stop pivx (all\|number)    | restart all or a specific pivx masternode(s) |
-| nodemaster cleanup pivx (all\|number) | delete chain data for all pivx masternodes   |
-| nodemaster status pivx (all\|number)  | systemd process status for a pivx masternode |
-| nodemaster tail pivx (all\|number)    | tail debug logs for a pivx masternode        |
+| nodemaster start pzdc (all\|number)   | start all or a specific pzdc masternode(s)   |
+| nodemaster restart pzdc (all\|number) | stop all or a specific pzdc masternode(s)    |
+| nodemaster stop pzdc (all\|number)    | restart all or a specific pzdc masternode(s) |
+| nodemaster cleanup pzdc (all\|number) | delete chain data for all pzdc masternodes   |
+| nodemaster status pzdc (all\|number)  | systemd process status for a pzdc masternode |
+| nodemaster tail pzdc (all\|number)    | tail debug logs for a pzdc masternode        |
 
 # Todo
 
