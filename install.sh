@@ -707,6 +707,11 @@ function prepare_mn_interfaces() {
 
     # generate the required ipv6 config
     if [ "${net}" -eq 6 ]; then
+    	# preventing possible /etc/rc.local not found errors during ipv6 installation
+	if [ "${NETWORK_CONFIG}" = "/etc/rc.local" ]; then
+	  touch ${NETWORK_CONFIG}
+	fi
+	
         # vultr specific, needed to work
         sed -ie '/iface ${ETH_INTERFACE} inet6 auto/s/^/#/' ${NETWORK_CONFIG}
 
